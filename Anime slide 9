@@ -1,0 +1,80 @@
+
+import SwiftUI
+
+struct ContentView: View {
+    let columns = [
+        GridItem(.flexible(), spacing: 15), // Adjusted spacing
+        GridItem(.flexible(), spacing: 15)  // Adjusted spacing
+    ]
+
+    var body: some View {
+        VStack(spacing: 0) {
+
+            // Top Bar
+            VStack {
+                HStack {
+                    Circle()
+                        .fill(Color.gray.opacity(0.3))
+                        .frame(width: 32, height: 32) // Slightly larger icon
+
+                    Spacer()
+
+                    RoundedRectangle(cornerRadius: 8) // Slightly less rounded corners
+                        .fill(Color(white: 0.93)) // Lighter white color for better visual match
+                        .frame(width: 110, height: 28) // Adjusted size
+                }
+                .padding(.horizontal, 20) // Adjusted horizontal padding
+                .padding(.vertical, 10) // Added vertical padding
+            .background(Color(red: 0.95, green: 0.95, blue: 0.95))
+            } // Even lighter gray background
+
+            Spacer()
+            
+            Text("Suggested Friends")
+                           .font(.title) // Example font styling
+                           .foregroundColor(.black) // Example text color
+                           .padding(.bottom, -15) // Add some spacing between text and griddd some spacing between text and grid
+                           
+            
+            Spacer()
+
+            // Grid of Purple Rectangles
+            LazyVGrid(columns: columns, spacing: 15) { // Adjusted vertical spacing
+                ForEach(0..<8) { _ in
+                    RoundedRectangle(cornerRadius: 18) // Slightly less rounded corners
+                        .fill(Color(red: 0.6, green: 0.3, blue: 0.8)) // More accurate purple color
+                        .aspectRatio(1.45/1, contentMode: .fit) // Fine-tuned aspect ratio
+                }
+            }
+            .padding(.horizontal, 20) // Adjusted horizontal padding
+            .padding(.bottom, 10) // Added bottom padding to the grid
+
+
+            Spacer()
+
+            // Bottom Bar
+            HStack(spacing: 36) { // Adjusted spacing between bottom bar icons
+                ForEach(0..<5) { _ in
+                    Rectangle()
+                        .fill(Color(red: 0.6, green: 0.3, blue: 0.8)) // More accurate purple color
+                        .frame(width: 28, height: 28) // Adjusted size
+                        .cornerRadius(4) // Slightly less rounded corners
+                }
+                Circle()
+                    .fill(Color.gray.opacity(0.3))
+                    .frame(width: 32, height: 32) // Slightly larger icon
+            }
+            .padding(.horizontal, 20) // Adjusted horizontal padding
+            .padding(.vertical, 10) // Added vertical padding
+            .background(Color(red: 0.90, green: 0.90, blue: 0.90)) // Lighter gray background for bottom bar
+        }
+        .background(Color(white: 0.98)) // Off-white background for overall view
+        .edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
